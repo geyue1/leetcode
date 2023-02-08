@@ -17,13 +17,14 @@ class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
         l = []
         n = len(words)
+        # 边界条件
         if len(s)<n*len(words[0]):
             return l
-        temp = []
+        temp = [] # 初始化滑动窗口
         step = len(words[0])
         for i in range(len(s)):
             temp.append(s[i])
-            while len(temp)>n*step:
+            while len(temp)>n*step: #保证滑动窗口长度
                 del temp[0]
             if len(temp)==n*step:
                 temp_str = "".join(temp)
